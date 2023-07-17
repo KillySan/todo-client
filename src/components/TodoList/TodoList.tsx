@@ -4,9 +4,9 @@ import { TodoItem } from 'src/components/TodoItem';
 import { TodoEntity } from 'src/features/TodoPlanner/store/types';
 
 interface ITodoListProps {
-  todos: Partial<TodoEntity>[];
+  todos: TodoEntity[];
   title: string;
-  onChange: (todo: any) => void;
+  onChange: (todo: TodoEntity) => void;
 }
 
 export const TodoList = ({ todos, title, onChange }: ITodoListProps) => {
@@ -20,13 +20,13 @@ export const TodoList = ({ todos, title, onChange }: ITodoListProps) => {
 
       <List dense className={classes.list}>
         <FormGroup>
-          {todos.map((todo, index) => {
+          {todos.map((todo) => {
             return (
               <TodoItem
                 className={classes.item}
                 onChange={onChange}
                 todo={todo}
-                key={index}
+                key={todo.id}
               />
             );
           })}

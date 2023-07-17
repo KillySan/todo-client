@@ -22,7 +22,6 @@ export function* wsEmitterSaga(
 export function wsListener(serviceWebSocket: Socket) {
   return eventChannel((emitter) => {
     serviceWebSocket.onAny((event, data) => {
-      console.log({ RECIVE_EVENT: event, data });
       emitter({ event, data });
     });
     serviceWebSocket.on('error', () => emitter(END));
